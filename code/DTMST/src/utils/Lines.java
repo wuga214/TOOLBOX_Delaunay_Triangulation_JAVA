@@ -1,6 +1,7 @@
 package utils;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
@@ -16,15 +17,28 @@ import structure.DPoint;
 
 
 public class Lines extends JComponent{
-	private HashSet<DEdge> l=null;
+	private HashSet<DEdge> full_edges=null;
+	private HashSet<DEdge> mst_edges=null;
 	private ArrayList<DPoint> p=null;
-	public Lines(HashSet<DEdge> edges){
+	public Lines(HashSet<DEdge> full,HashSet<DEdge> mst){
 		super();
-		l=edges;
+		full_edges=full;
+		mst_edges=mst;
 	}
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		for(DEdge line:l){
+		g2.setBackground(Color.white);
+		float dash[] = { 10.0f };
+		g2.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT,
+		        BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f));
+		g2.setColor(Color.gray);
+		for(DEdge line:full_edges){
+			Shape k = new Line2D.Double(line.p[0].x,line.p[0].y, line.p[1].x,line.p[1].y);
+			g2.draw(k);
+		}
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke((float) 1.5));
+		for(DEdge line:mst_edges){
 			Shape k = new Line2D.Double(line.p[0].x,line.p[0].y, line.p[1].x,line.p[1].y);
 			g2.draw(k);
 		}
