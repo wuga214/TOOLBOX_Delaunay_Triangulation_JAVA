@@ -7,7 +7,7 @@ Features:
 Bowyer-Watson Algorithm
 Kruskal Algorithm
 ![alt tag](https://github.com/wuga214/Delaunay-Triangulation/blob/master/sample.png)
-![alt tag](https://github.com/wuga214/Delaunay-Triangulation/blob/master/sample2.png)
+![alt tag](https://github.com/wuga214/Delaunay-Triangulation/blob/master/sample2.jpeg)
 
 How to use:
 ===
